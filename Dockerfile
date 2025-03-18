@@ -11,9 +11,9 @@ WORKDIR /app
 ARG PROTOC_GEN_GO_VER
 ARG PROTOC_GEN_GO_GRPC_VER
 ARG PROTOC_GO_INJECT_TAG_VER
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v${PROTOC_GEN_GO_VER} && \
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v${PROTOC_GEN_GO_VER}	&& \
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v${PROTOC_GEN_GO_GRPC_VER} && \
-	go install github.com/favadi/protoc-go-inject-tag@v${PROTOC_GO_INJECT_TAG_VER}
+    go install github.com/favadi/protoc-go-inject-tag@v${PROTOC_GO_INJECT_TAG_VER}
 
 
 ARG PROTOC_VER
