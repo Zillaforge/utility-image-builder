@@ -1,3 +1,4 @@
+ARG GOLANG_VERSION=1.22.4
 FROM ubuntu:22.04
 
 RUN apt-get update && \
@@ -6,14 +7,14 @@ RUN apt-get update && \
 RUN apt-get install -y wget make git ruby ruby-dev rubygems build-essential mysql-client curl jq duc
 
 
-ARG PYTHON_MAJOR_VER
-ENV MATPLOTLIB_PATH=/usr/local/lib/python${PYTHON_MAJOR_VER}/site-packages/matplotlib
+ARG GOLANG_VERSION
+ENV GO_V=${GOLANG_VERSION}
 
 ARG BUILDPLATFORM
-RUN if [ "$BUILDPLATFORM" = "linux/arm64" ]; then \
-		GOLANG_PACKAGE="go1.22.4.linux-arm64.tar.gz";  \
+RUN if [ "$BUILDPLATFORM" = "linux/arm64" ]; then 		\
+		GOLANG_PACKAGE=go${GO_V}.linux-arm64.tar.gz;  	\
 	else \         
-		GOLANG_PACKAGE="go1.22.4.linux-amd64.tar.gz"; \    
+		GOLANG_PACKAGE=go${GO_V}.linux-amd64.tar.gz; 	\
     fi 											&& \
 	wget https://go.dev/dl/$GOLANG_PACKAGE   	&& \
 	tar -C /usr/local -xzf $GOLANG_PACKAGE 		&& \
