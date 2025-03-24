@@ -9,32 +9,44 @@ GOLANG_VERSION ?= 1.22.4
 .PHONY: release-image-5.27
 release-image-5.27: release-image-golang
 	docker build \
+	--platform linux/$(CPU_ARCH) \
 	--build-arg PROTOC_VER=27.2 \
 	--build-arg PROTOC_GEN_GO_VER=1.34.2 \
 	--build-arg PROTOC_GEN_GO_GRPC_VER=1.5.1 \
 	--build-arg PROTOC_GO_INJECT_TAG_VER=1.4.0 \
+	--build-arg OWNER=$(OWNER)  \
+	--build-arg GOLANG_VERSION=$(GOLANG_VERSION) \
+	--build-arg CPU_ARCH=$(CPU_ARCH) \
 	-f protocbuffer/Dockerfile \
-	-t $(OWNER)/$(PROTOBUF_IMAGE_NAME):5.27.2-$(OS) .
+	-t $(OWNER)/$(PROTOBUF_IMAGE_NAME):5.27.2-$(OS)-$(CPU_ARCH) .
 
 .PHONY: release-image-5.28
 release-image-5.28: release-image-golang
 	docker build \
+	--platform linux/$(CPU_ARCH) \
 	--build-arg PROTOC_VER=28.0 \
 	--build-arg PROTOC_GEN_GO_VER=1.34.2 \
 	--build-arg PROTOC_GEN_GO_GRPC_VER=1.5.1 \
 	--build-arg PROTOC_GO_INJECT_TAG_VER=1.4.0 \
+	--build-arg OWNER=$(OWNER)  \
+	--build-arg GOLANG_VERSION=$(GOLANG_VERSION) \
+	--build-arg CPU_ARCH=$(CPU_ARCH) \
 	-f protocbuffer/Dockerfile \
-	-t $(OWNER)/$(PROTOBUF_IMAGE_NAME):5.28.0-$(OS) .
+	-t $(OWNER)/$(PROTOBUF_IMAGE_NAME):5.28.0-$(OS)-$(CPU_ARCH) .
 
 .PHONY: release-image-4.22
 release-image-4.22: release-image-golang
 	docker build \
+	--platform linux/$(CPU_ARCH) \
 	--build-arg PROTOC_VER=22.0 \
 	--build-arg PROTOC_GEN_GO_VER=1.28.1 \
 	--build-arg PROTOC_GEN_GO_GRPC_VER=1.3.0 \
 	--build-arg PROTOC_GO_INJECT_TAG_VER=1.4.0 \
+	--build-arg OWNER=$(OWNER)  \
+	--build-arg GOLANG_VERSION=$(GOLANG_VERSION) \
+	--build-arg CPU_ARCH=$(CPU_ARCH) \
 	-f protocbuffer/Dockerfile \
-	-t $(OWNER)/$(PROTOBUF_IMAGE_NAME):4.22.0-$(OS) .
+	-t $(OWNER)/$(PROTOBUF_IMAGE_NAME):4.22.0-$(OS)-$(CPU_ARCH) .
 
 
 .PHONY: release-image-golang

@@ -2,9 +2,9 @@ ARG GOLANG_VERSION=1.22.4
 FROM ubuntu:22.04
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
-
-RUN apt-get install -y wget make git ruby ruby-dev rubygems build-essential mysql-client curl jq duc
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    tzdata wget make git ruby ruby-dev rubygems build-essential mysql-client curl jq duc unzip && \
+    rm -rf /var/lib/apt/lists/*
 
 
 ARG GOLANG_VERSION
