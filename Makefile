@@ -1,5 +1,5 @@
 OWNER ?= ociscloud
-CPU_ARCH ?= amd64
+CPU_ARCH ?= $(shell uname -m)
 OS ?= ubuntu
 
 PROTOBUF_IMAGE_NAME ?= protobuf
