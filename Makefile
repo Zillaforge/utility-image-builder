@@ -59,5 +59,13 @@ release-image-golang:
 	-t $(OWNER)/golang:$(GOLANG_VERSION)-$(OS)-${CPU_ARCH} .
 
 
+.PHONY: release-image-debugger
+release-image-debugger:
+	docker build \
+	--platform linux/$(CPU_ARCH) \
+	-f debugger/Dockerfile \
+	-t $(OWNER)/debugger:1.0.2 .
+
+
 .PHONY: release-image
-release-image: release-image-5.27 release-image-5.28 release-image-4.22 release-image-golang
+release-image: release-image-5.27 release-image-5.28 release-image-4.22 release-image-golang release-image-debugger
