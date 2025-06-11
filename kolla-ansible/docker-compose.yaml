@@ -1,7 +1,7 @@
 services:
   kolla_c:
     container_name: kolla_c
-    image: kolla-in-docker:2024.1-ubuntu-jammy
+    image: ociscloud/kolla-in-docker:2024.1-ubuntu-jammy
     restart: always
     volumes:
       - /etc/localtime:/etc/localtime:ro
