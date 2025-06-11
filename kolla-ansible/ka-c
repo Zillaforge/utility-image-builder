@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker exec -t kolla_c ka $@
+

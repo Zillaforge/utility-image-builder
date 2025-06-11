@@ -1,0 +1,13 @@
+services:
+  kolla_c:
+    container_name: kolla_c
+    image: kolla-in-docker:2024.1-ubuntu-jammy
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /root/.ssh:/root/.ssh:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/hosts:/etc/hosts:rw
+      - /etc/kolla-c:/etc/kolla:rw
+    #      - /etc/kolla-ansible:/kolla-ansible:rw
+    network_mode: host

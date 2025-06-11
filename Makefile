@@ -67,5 +67,14 @@ release-image-debugger:
 	-t $(OWNER)/debugger:1.0.2 .
 
 
+.PHONY: release-image-kolla
+release-image-kolla:
+	docker build \
+	--platform linux/$(CPU_ARCH) \
+	-f kolla-ansible/Dockerfile \
+	-t $(OWNER)/kolla-in-docker:2024.1-ubuntu-jammy ./kolla-ansible
+
+
+
 .PHONY: release-image
-release-image: release-image-5.27 release-image-5.28 release-image-4.22 release-image-golang release-image-debugger
+release-image: release-image-5.27 release-image-5.28 release-image-4.22 release-image-golang release-image-debugger release-image-kolla
